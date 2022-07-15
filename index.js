@@ -4,6 +4,8 @@ const listContainerEl = document.getElementById('listContainer');
 const loaderEl = document.getElementById('loader');
 
 let apiURL = 'https://fakestoreapi.com/products';
+
+// create function to get product data from api 
 async function getProducts() {
     const res = await fetch(`${apiURL}`);
     const data = await res.json();
@@ -11,7 +13,7 @@ async function getProducts() {
     productUI(data);
     console.log(data);
 }
-
+// function to fetch product details
 async function getProductDetails(id) {
     const res = await fetch(`${apiURL}/${id}`);
     const data = await res.json();
@@ -19,6 +21,7 @@ async function getProductDetails(id) {
     productDetailsUI(data);
 }
 
+// function to show product in UI
 function productUI(data) {
     loaderEl.style.display = 'none';
     data.forEach(product => {
@@ -38,6 +41,8 @@ function productUI(data) {
     });
 }
 
+
+// function to show productDetails in UI
 function productDetailsUI(data) {
     loaderEl.style.display = 'none';
     page2El.style.display = 'flex';
